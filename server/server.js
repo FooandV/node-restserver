@@ -11,8 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-/* impotando las rutas: */
-app.use(require('./routes/usuario'))
+
+/* configuración global de las rutas: */
+app.use(require('./routes/index'));
 
 
 /* establecer conexión a la base de datos: */

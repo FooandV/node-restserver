@@ -45,7 +45,7 @@ let usuarioSchema = new Schema({
     default: false
   }
 });
-/* como la contraseña jamas se regresa */
+/* como la contraseña jamas se regresa: */
 
 /* para no mandar el objeto en la respuesta, se puede manipular el schema */
 /* toJSON, este método en un esquema siempre se llama cuando se intenta imprimir, como es en este caso

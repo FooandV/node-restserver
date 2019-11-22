@@ -3,9 +3,20 @@ const bcrypt = require('bcrypt');
 const _ = require('underscore');
 const app = express();
 const Usuario = require("../models/usuario");
+/* importación del middleware de autenticación: usando
+destructuración:*/
+const {verificaToken,verificaAdmin_Role} = require('../middlewares/autenticacion')
 
 /* routes: */
-app.get("/usuario", function(req, res) {
+app.get("/usuario",verificaToken ,(req, res)=> {
+ 
+  // return res.json({
+  //  usuario: req.usuario,
+  //  nombre: req.usuario.nombre,
+  //  email: req.usuario.email
+  
+  // })
+  
   /* acá estan los parámetros opcionales:
   desde que valor se quiere filtrar: */
   let desde = req.query.desde  ||  0;
@@ -48,7 +59,7 @@ app.get("/usuario", function(req, res) {
   // res.json("get usuario Local");
 });
 
-app.post("/usuario", function(req, res) {
+app.post("/usuario", [verificaToken,verificaAdmin_Role], (req, res)=> {
   let body = req.body;
   /* para utilizar el modelo de la bd o esquema Usuario: */
   /* se crea una nueva instancia del esquema que ya fue creado con
@@ -95,7 +106,7 @@ app.post("/usuario", function(req, res) {
   // }
 });
 /* servicio para actualizar: */
-app.put("/usuario/:id", function(req, res) {
+app.put("/usuario/:id", [verificaToken,verificaAdmin_Role], function(req, res) {
   let id =
     req.params.id; /* de esta manera se obtiene el parametro del id que viene desde la url */
   // let body = req.body; /* para obtener el body */
@@ -126,14 +137,14 @@ app.put("/usuario/:id", function(req, res) {
   );
 });
 
-app.delete("/usuario/:id", function(req, res) {
+app.delete("/usuario/:id", [verificaToken,verificaAdmin_Role],function(req, res) {
   // res.json("delete usuario");
   let id = req.params.id;
   /* para realizar la eliminación fisica o sea de BD */
   // Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
   let cambiaEstado = {
     estado: false
-  }
+  };
   Usuario.findByIdAndUpdate(id, cambiaEstado, (err, usuarioBorrado) => {
     if (err) {
       return res.status(400).json({
@@ -141,18 +152,19 @@ app.delete("/usuario/:id", function(req, res) {
         err
       });
     }
-    if( !usuarioBorrado){
+    if (!usuarioBorrado) {
       return res.status(400).json({
         ok: false,
-        err:{
-          message: 'usuario no encontrado'
+        err: {
+          message: "usuario no encontrado"
         }
       });
     }
 
     res.json({
       ok: true,
-      usuario: usuarioBorrado
+      usuario: usuarioBorrado,
+      message: "Usuario borrado"
     });
   });
 });
