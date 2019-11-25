@@ -59,7 +59,7 @@ app.get("/usuario",(req, res)=> {
   // res.json("get usuario Local");
 });
 
-app.post("/usuario", verificaAdmin_Role, (req, res)=> {
+app.post("/usuario",  (req, res)=> {
   let body = req.body;
   /* para utilizar el modelo de la bd o esquema Usuario: */
   /* se crea una nueva instancia del esquema que ya fue creado con
