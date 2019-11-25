@@ -17,19 +17,12 @@ process.env.NODE_ENV = process.env.NODE_ENV || "dev";
 //60 minutos
 //24 horas
 //30 dias
-process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30 ;
+process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
 
 // ========================
 // seed "semilla" de autenticación
 // ========================
-process.env.SEED = process.env.SEED  ||'este-es-el-seed-desarollo';
-
-
-
-
-
-
-
+process.env.SEED = process.env.SEED || "este-es-el-seed-desarollo";
 
 // ========================
 // Base de datos
@@ -37,14 +30,13 @@ process.env.SEED = process.env.SEED  ||'este-es-el-seed-desarollo';
 
 let urlDB;
 
-if (process.env.NODE_ENV == 'dev'){
-    urlDB = 'mongodb://localhost:27017/cafe'
-}else{
-urlDB =
-  // "mongodb+srv://freyder:violetta@cluster0-rzoqa.mongodb.net/test?retryWrites=true&w=majority";
-  process.env.mongodb;
-}
-
+// if (process.env.NODE_ENV == "dev") {
+//   urlDB = "mongodb://localhost:27017/cafe";
+// } else {
+  // process.env.mongodb; 
+urlDB = "mongodb+srv://freyder:violetta@cluster0-rzoqa.mongodb.net/test?retryWrites=true&w=majority";
+    
+// }
 process.env.urlDB = urlDB;
 
 /* sring connection local: */
