@@ -30,13 +30,13 @@ process.env.SEED = process.env.SEED || "este-es-el-seed-desarollo";
 
 let urlDB;
 
-// if (process.env.NODE_ENV == "dev") {
-//   urlDB = "mongodb://localhost:27017/cafe";
-// } else {
-  // process.env.mongodb; 
-urlDB = "mongodb+srv://freyder:violetta@cluster0-rzoqa.mongodb.net/test?retryWrites=true&w=majority";
+if (process.env.NODE_ENV == "dev") {
+  urlDB = "mongodb://localhost:27017/cafe";
+} else {
+  process.env.mongodb; 
+// urlDB = "mongodb+srv://freyder:violetta@cluster0-rzoqa.mongodb.net/test?retryWrites=true&w=majority";
     
-// }
+}
 process.env.urlDB = urlDB;
 
 /* sring connection local: */
