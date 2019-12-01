@@ -55,6 +55,7 @@ app.get("/usuario", [verificaToken,verificaAdmin_Role], (req, res)=> {
 
 
         })
+        
 
   // res.json("get usuario Local");
 });

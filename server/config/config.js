@@ -37,6 +37,13 @@ if (process.env.NODE_ENV == "dev") {
 urlDB = "mongodb+srv://freyder:violetta@cluster0-rzoqa.mongodb.net/test?retryWrites=true&w=majority";
     
 }
+// ========================
+// Google Client Id
+// ======================== 
+process.env.CLIENT_ID = process.env.CLIENT_ID || '843894900556-t0u34jncbgn3hukulqhd9t7tpd49evlb.apps.googleusercontent.com'; 
+
+
+
 process.env.urlDB = urlDB;
 
 /* sring connection local: */
