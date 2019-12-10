@@ -108,12 +108,13 @@ app.post("/usuario", [verificaToken,verificaAdmin_Role], (req, res)=> {
 });
 /* servicio para actualizar: */
 app.put("/usuario/:id", [verificaToken,verificaAdmin_Role], function(req, res) {
-  let id =
-    req.params.id; /* de esta manera se obtiene el parametro del id que viene desde la url */
+  let id = req.params.id; /* de esta manera se obtiene el parametro del 
+  id que viene desde la url */
   // let body = req.body; /* para obtener el body */
   /* utilizando underscore:
       params: 1, recibe todo el objeto que tiene todas las propiedades
-              2, un arreglo con todas la propiedades válidas que se pueden actualizar */
+              2, un arreglo con todas la propiedades válidas que se 
+              pueden actualizar */
   let body = _.pick(req.body, ["nombre", "email", "img", "role", "estado"]);
 
   // delete body.password;

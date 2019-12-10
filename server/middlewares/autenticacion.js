@@ -22,6 +22,7 @@ let verificaToken = (req, res, next) => {
     }
 
     req.usuario = decoded.usuario; /* todo esto es el payload */
+    console.log(req.usuario);
     next();
   });
 };
