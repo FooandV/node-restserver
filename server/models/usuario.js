@@ -52,10 +52,13 @@ usuarioSchema.methods.toJSON = function() {
   let user = this; /* lo que sea que tenga en ese momento */
   /* se toma el objeto de ese usuario: */
   let userObject = user.toObject(); /* con esto ya tengo todas las propiedades y métodos */
+  // console.log('soy la variable userObject,', userObject )
+
   delete userObject.password; /* acá ya se tiene un objeto que NO tiene la contraseña */
 
   return userObject;
 };
+
 
 usuarioSchema.plugin(uniqueValidator, { message: "{PATH} debe de ser único" });
 

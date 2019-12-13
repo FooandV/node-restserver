@@ -9,5 +9,9 @@ app.use(require('./login'));
 app.use(require('./categoria'));
 /* importación productos */
 app.use(require('./producto'));
+/* importación archivos */
+app.use(require('./uploads'));
+/* importación imagenes */
+app.use(require('./imagenes'));
 
 module.exports = app;
